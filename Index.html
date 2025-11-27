@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرصد التجارة الخارجية السودانية</title>
+    
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        'sudan-gold': '#fbbf24',
+                        'sudan-blue': '#3b82f6',
+                        'sudan-dark': '#0f172a',
+                        'sudan-card': '#1e293b',
+                        'sudan-text': '#f8fafc',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #0f172a; 
+            color: #f8fafc; 
+        }
+        .chart-container { 
+            position: relative; 
+            height: 300px; 
+            width: 100%; 
+        }
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        /* تخصيص علامات التبويب */
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #334155;
+            border-color: #fbbf24;
+        }
+    </style>
+</head>
+<body class="bg-sudan-dark min-h-screen p-4 md:p-6 lg:p-8 font-cairo">
+
+    <!-- الرأس -->
+    <header class="mb-8 border-b border-slate-700 pb-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+            <h1 class="text-2xl md:text-3xl font-bold text-sudan-gold">
+                <span class="text-white">مرصد</span> التجارة الخارجية السودانية
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">تقرير الأداء الاقتصادي - النصف الأول 2025</p>
+        </div>
+        
+        
+        
+         <div class="text-left md:text-right">
+            <span class="bg-blue-900 text-blue-200 text-xs font-semibold px-3 py-1 rounded-full border border-blue-700">
+                By: Ahmed Dawoud 
+            </span>
+        </div>
+        
+        
+    </header>
+
+    <!-- علامات التبويب -->
+    <div class="mb-6 flex overflow-x-auto pb-2">
+        <div class="flex space-x-2 space-x-reverse">
+            <button class="tab-button active px-4 py-2 rounded-lg border border-slate-700 text-sm font-medium" data-tab="overview">
+                نظرة عامة
+            </button>
+            
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="tab-content">
+        
+        
+        
+        
+        
+        <!-- Project Description -->
+        <div class="bg-project-card p-6 rounded-xl shadow-lg border-t-4 border-project-gold mb-8">
+            
+            <p class="text-slate-300">هذا المشروع هو عرض لقدرتي على إنشاء لوحة تحكم قائمة على البيانات باستخدام تقنيات الويب الحديثة. تم تصميم هذه اللوحة لعرض بيانات اقتصادية حقيقية للتجارة الخارجية السودانية على مدار فترة زمنية معينة، مع تسليط الضوء على الاتجاهات الاقتصادية ومؤشرات الأداء الرئيسية. الرسوم البيانية في اللوحة تفاعلية ومتجاوبة، مما يتيح تجربة مستخدم سلسة عبر الأجهزة المختلفة.
+</p>
+        </div>
+        <!-- نظرة عامة -->
+        <div id="overview" class="tab-panel active">
+            <!-- بطاقات الإحصائيات -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-sudan-card p-6 rounded-xl shadow-lg border-t-4 border-sudan-gold hover:bg-slate-700 transition duration-300">
+                    <div class="text-slate-400 text-sm font-medium mb-2">إجمالي الصادرات (يناير-يونيو 2025)</div>
+                    <div class="text-3xl font-bold text-white flex items-baseline gap-2">
+                        1,354.9
+                        <span class="text-sm text-sudan-gold font-normal">مليون $</span>
+                    </div>
+                    <div class="mt-2 text-xs text-red-400 flex items-center">
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                        </svg>
+                        انخفاض 13.7% عن 2024
+                    </div>
+                </div>
+
+                <div class="bg-sudan-card p-6 rounded-xl shadow-lg border-t-4 border-blue-500 hover:bg-slate-700 transition duration-300">
+                    <div class="text-slate-400 text-sm font-medium mb-2">إجمالي الواردات (يناير-يونيو 2025)</div>
+                    <div class="text-3xl font-bold text-white flex items-baseline gap-2">
+                        2,641.7
+                        <span class="text-sm text-blue-400 font-normal">مليون $</span>
+                    </div>
+                    <div class="mt-2 text-xs text-red-400 flex items-center">
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                        </svg>
+                        انخفاض 46.2% عن 2024
+                    </div>
+                </div>
+
+                <div class="bg-sudan-card p-6 rounded-xl shadow-lg border-t-4 border-red-500 hover:bg-slate-700 transition duration-300">
+                    <div class="text-slate-400 text-sm font-medium mb-2">الميزان التجاري</div>
+                    <div class="text-3xl font-bold text-red-400 flex items-baseline gap-2" dir="ltr">
+                        -1,286.8
+                        <span class="text-sm text-slate-300 font-normal">مليون $</span>
+                    </div>
+                    <div class="mt-2 text-xs text-green-400 flex items-center">
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
+                        </svg>
+                        تحسن 27.6% عن 2024
+                    </div>
+                </div>
+            </div>
+
+            <!-- المخططات الرئيسية -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <div class="bg-sudan-card p-6 rounded-xl shadow-lg lg:col-span-2 border border-slate-700">
+                    <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">الميزان التجاري التاريخي (2015 - 2025)</h2>
+                    <div class="chart-container">
+                        <canvas id="historicalChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-sudan-card p-6 rounded-xl shadow-lg border border-slate-700">
+                    <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">هيكل الصادرات (يناير-يونيو 2025)</h2>
+                    <div class="chart-container relative">
+                        <canvas id="exportsStructureChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- مخططات إضافية -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-sudan-card p-6 rounded-xl shadow-lg border border-slate-700">
+                    <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">أهم الشركاء التجاريين - الصادرات</h2>
+                    <div class="chart-container">
+                        <canvas id="partnersChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-sudan-card p-6 rounded-xl shadow-lg border border-slate-700">
+                    <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">الأداء الشهري (يناير - يونيو 2025)</h2>
+                    <div class="chart-container">
+                        <canvas id="monthlyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- جدول البيانات -->
+            <div class="mt-8 bg-sudan-card p-6 rounded-xl shadow-lg border border-slate-700">
+                <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">الميزان التجاري خلال الفترة 2015-2025 (بآلاف الدولارات)</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-slate-300">
+                        <thead>
+                            <tr class="border-b border-slate-700">
+                                <th class="py-3 px-4 text-right">السنة</th>
+                                <th class="py-3 px-4 text-right">الصادرات</th>
+                                <th class="py-3 px-4 text-right">الواردات</th>
+                                <th class="py-3 px-4 text-right">الميزان التجاري</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2015</td>
+                                <td class="py-3 px-4">3,169,011</td>
+                                <td class="py-3 px-4">9,509,115</td>
+                                <td class="py-3 px-4 text-red-400">-6,340,104</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2016</td>
+                                <td class="py-3 px-4">3,093,639</td>
+                                <td class="py-3 px-4">8,310,607</td>
+                                <td class="py-3 px-4 text-red-400">-5,216,968</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2017</td>
+                                <td class="py-3 px-4">4,100,381</td>
+                                <td class="py-3 px-4">9,133,668</td>
+                                <td class="py-3 px-4 text-red-400">-5,033,287</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2018</td>
+                                <td class="py-3 px-4">3,478,333</td>
+                                <td class="py-3 px-4">7,850,081</td>
+                                <td class="py-3 px-4 text-red-400">-4,371,748</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2019</td>
+                                <td class="py-3 px-4">3,734,657</td>
+                                <td class="py-3 px-4">9,290,528</td>
+                                <td class="py-3 px-4 text-red-400">-5,555,871</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2020</td>
+                                <td class="py-3 px-4">3,802,573</td>
+                                <td class="py-3 px-4">9,837,676</td>
+                                <td class="py-3 px-4 text-red-400">-6,035,103</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2021</td>
+                                <td class="py-3 px-4">5,027,385</td>
+                                <td class="py-3 px-4">9,894,046</td>
+                                <td class="py-3 px-4 text-red-400">-4,866,661</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2022</td>
+                                <td class="py-3 px-4">4,357,418</td>
+                                <td class="py-3 px-4">11,094,849</td>
+                                <td class="py-3 px-4 text-red-400">-6,737,431</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2023</td>
+                                <td class="py-3 px-4">3,628,350</td>
+                                <td class="py-3 px-4">7,498,505</td>
+                                <td class="py-3 px-4 text-red-400">-3,870,155</td>
+                            </tr>
+                            <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2024</td>
+                                <td class="py-3 px-4">3,134,487</td>
+                                <td class="py-3 px-4">4,911,166</td>
+                                <td class="py-3 px-4 text-red-400">-1,776,679</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/50">
+                                <td class="py-3 px-4">2025</td>
+                                <td class="py-3 px-4">1,354,914</td>
+                                <td class="py-3 px-4">2,641,742</td>
+                                <td class="py-3 px-4 text-red-400">-1,286,829</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- الصادرات -->
+        <div id="exports" class="tab-panel hidden">
+            <div class="bg-sudan-card p-6 rounded-xl shadow-lg border border-slate-700 mb-6">
+                <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">تحليل الصادرات</h2>
+                <p class="text-slate-400">تحليل مفصل لأداء الصادرات السودانية حسب السلع والجهات</p>
+            </div>
+            <!-- سيتم إضافة محتوى الصادرات هنا -->
+        </div>
+
+        <!-- الواردات -->
+        <div id="imports" class="tab-panel hidden">
+            <div class="bg-sudan-card p-6 rounded-xl shadow-lg border border-slate-700 mb-6">
+                <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">تحليل الواردات</h2>
+                <p class="text-slate-400">تحليل مفصل لأداء الواردات السودانية حسب السلع والجهات</p>
+            </div>
+            <!-- سيتم إضافة محتوى الواردات هنا -->
+        </div>
+
+        <!-- الميزان التجاري -->
+        <div id="balance" class="tab-panel hidden">
+            <div class="bg-sudan-card p-6 rounded-xl shadow-lg border border-slate-700 mb-6">
+                <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">تحليل الميزان التجاري</h2>
+                <p class="text-slate-400">تحليل مفصل لأداء الميزان التجاري السوداني</p>
+            </div>
+            <!-- سيتم إضافة محتوى الميزان التجاري هنا -->
+        </div>
+
+        <!-- المقارنة التاريخية -->
+        <div id="historical" class="tab-panel hidden">
+            <div class="bg-sudan-card p-6 rounded-xl shadow-lg border border-slate-700 mb-6">
+                <h2 class="text-lg font-semibold text-white mb-4 border-r-4 border-sudan-gold pr-3">المقارنة التاريخية</h2>
+                <p class="text-slate-400">مقارنة أداء التجارة الخارجية عبر السنوات المختلفة</p>
+            </div>
+            <!-- سيتم إضافة محتوى المقارنة التاريخية هنا -->
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="mt-12 text-center text-slate-500 text-sm pb-6 border-t border-slate-800 pt-6">
+        
+            <div class="text-sm">
+                <p>تم تطوير اللوحة باستخدام Tailwind CSS و Chart.js</p>
+                
+            </div>
+        
+    </footer>
+
+    <script>
+        // تهيئة Chart.js
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Cairo', sans-serif";
+        Chart.defaults.borderColor = '#334155';
+
+        const commonGrid = {
+            color: '#334155',
+            borderDash: [5, 5]
+        };
+
+        // 1. الميزان التجاري التاريخي
+        const ctxHistorical = document.getElementById('historicalChart').getContext('2d');
+        
+        // إنشاء التدرجات اللونية
+        const gradientExport = ctxHistorical.createLinearGradient(0, 0, 0, 400);
+        gradientExport.addColorStop(0, 'rgba(251, 191, 36, 0.5)');
+        gradientExport.addColorStop(1, 'rgba(251, 191, 36, 0.0)');
+
+        const gradientImport = ctxHistorical.createLinearGradient(0, 0, 0, 400);
+        gradientImport.addColorStop(0, 'rgba(59, 130, 246, 0.5)');
+        gradientImport.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+
+        new Chart(ctxHistorical, {
+            type: 'line',
+            data: {
+                labels: ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+                datasets: [{
+                    label: 'الصادرات',
+                    data: [3169, 3094, 4100, 3478, 3735, 3803, 5027, 4357, 3628, 3134, 1355],
+                    borderColor: '#fbbf24',
+                    backgroundColor: gradientExport,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 3
+                }, {
+                    label: 'الواردات',
+                    data: [9509, 8311, 9134, 7850, 9291, 9838, 9894, 11095, 7499, 4911, 2642],
+                    borderColor: '#3b82f6',
+                    backgroundColor: gradientImport,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { position: 'top', align: 'end' },
+                    tooltip: {
+                        callbacks: { 
+                            label: (ctx) => `${ctx.dataset.label}: ${ctx.raw} مليون $` 
+                        }
+                    }
+                },
+                scales: {
+                    y: { 
+                        grid: commonGrid, 
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + ' مليون $';
+                            }
+                        }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // 2. هيكل الصادرات
+        const ctxExports = document.getElementById('exportsStructureChart').getContext('2d');
+        new Chart(ctxExports, {
+            type: 'doughnut',
+            data: {
+                labels: ["ذهب", "حيوانات حية", "سمسم", "صمغ عربي", "قطن", "أخرى"],
+                datasets: [{
+                    data: [839.9, 201.4, 150.1, 36.6, 22.3, 104.7],
+                    backgroundColor: [
+                        '#fbbf24',
+                        '#f59e0b',
+                        '#10b981',
+                        '#8b5cf6',
+                        '#f8fafc',
+                        '#64748b'
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { 
+                        position: 'right', 
+                        labels: { 
+                            font: { size: 11 },
+                            usePointStyle: true,
+                            padding: 15
+                        } 
+                    },
+                    tooltip: {
+                        callbacks: { 
+                            label: (ctx) => ` ${ctx.label}: ${ctx.raw} مليون $` 
+                        }
+                    }
+                },
+                cutout: '65%'
+            }
+        });
+
+        // 3. الشركاء التجاريون
+        const ctxPartners = document.getElementById('partnersChart').getContext('2d');
+        new Chart(ctxPartners, {
+            type: 'bar',
+            data: {
+                labels: ["الإمارات", "مصر", "الصين", "السعودية", "الهند"],
+                datasets: [{
+                    label: 'قيمة الصادرات (مليون $)',
+                    data: [791.5, 146.7, 29.3, 3.5, 19.1],
+                    backgroundColor: '#fbbf24',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { 
+                        grid: commonGrid,
+                        ticks: {
+                            callback: function(value) {
+                                return value + ' مليون $';
+                            }
+                        }
+                    },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+
+        // 4. الأداء الشهري
+        const ctxMonthly = document.getElementById('monthlyChart').getContext('2d');
+        new Chart(ctxMonthly, {
+            type: 'bar',
+            data: {
+                labels: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو"],
+                datasets: [{
+                    type: 'line',
+                    label: 'الصادرات',
+                    data: [206.3, 218.6, 279.1, 254.8, 253.2, 142.8],
+                    borderColor: '#fbbf24',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#fbbf24',
+                    pointRadius: 4,
+                    fill: false,
+                    yAxisID: 'y'
+                }, {
+                    type: 'bar',
+                    label: 'الواردات',
+                    data: [451.3, 395.9, 465.6, 431.4, 494.3, 403.2],
+                    backgroundColor: '#3b82f6',
+                    borderRadius: 4,
+                    yAxisID: 'y'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { position: 'top', align: 'end' }
+                },
+                scales: {
+                    y: { 
+                        grid: commonGrid, 
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + ' مليون $';
+                            }
+                        }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // إدارة علامات التبويب
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشاط من جميع الأزرار
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // إضافة النشاط للزر المحدد
+                this.classList.add('active');
+                
+                // إخفاء جميع ألواح المحتوى
+                document.querySelectorAll('.tab-panel').forEach(panel => {
+                    panel.classList.add('hidden');
+                    panel.classList.remove('active');
+                });
+                
+                // إظهار اللوحة المحددة
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.remove('hidden');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
